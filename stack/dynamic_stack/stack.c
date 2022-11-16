@@ -8,7 +8,7 @@ struct stack_t*
 init_stack (size_t size) {
 	assert (size > 0);
 	struct stack_t *st;
-	
+
 	st       = (struct stack_t *)malloc (sizeof (struct stack_t));
 	st->base = (char *)malloc (size * sizeof (char));
 	st->size = size;
@@ -29,10 +29,10 @@ int
 push (struct stack_t *st, char item) {
 	if (st->top < (st->base + st->size)) {
 		*(st->top)++ = item;
-		return (0);	
+		return (0);
 	} else {
 		return (-1);
-	}	
+	}
 }
 
 /*==================== pop ====================*/

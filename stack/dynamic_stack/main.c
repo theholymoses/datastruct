@@ -28,8 +28,8 @@ int main (void) {
 	while ( !is_full (st)) {
 		randnum = rand_range (FROM, TO);
 		push (st, randnum);
-		
-		printf ("Added element %c(%d) to stack.\n", randnum, randnum);	
+
+		printf ("Added element %c(%d) to stack.\n", randnum, randnum);
 	}
 
 	printf ("******************** Removing elements from stack ********************\n");
@@ -37,7 +37,7 @@ int main (void) {
 	while ( !is_empty (st)) {
 		removed = pop (st);
 
-	printf ("Removed element %c(%d) from stack.\n", removed, removed); 
+	printf ("Removed element %c(%d) from stack.\n", removed, removed);
 	}
 
 	return (0);
