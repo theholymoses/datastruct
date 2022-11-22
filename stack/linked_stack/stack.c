@@ -13,11 +13,18 @@ struct node_t *free_list     = NULL;
 int size_left                = 0;
 
 /*==================== Memory access ====================*/
+
+/* N nodes are allocated immideately and then used when needed
+ *   so "malloc" is called rarely, only when N nodes are in use and more are needed
+ *   memory is never freed, assuming that this structure will be used until programm termination
+ * When node is "returned" it is placed in "free_list" and it can be used later via "get_node" call
+ */
+
 struct node_t*
 get_node (void) {
 	struct node_t *temp;
 
-	if (free_list != NULL) {
+	if (free_list != NULL) {  /* If some nodes were returned via "return_node" they are reused here later */
 		temp = free_list;
 		free_list = free_list -> next;
 	} else {
