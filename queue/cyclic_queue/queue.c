@@ -15,7 +15,7 @@ init_queue (int size) {
 	q -> base = (char*)malloc (size * sizeof (char));
 
 	q -> size  = size;
-	q -> front = qu -> rear = 0;
+	q -> front = q -> rear = 0;
 	return (q);
 }
 
@@ -32,7 +32,7 @@ enqueue (struct queue_t *queue, char item) {
 		queue -> rear = ((queue -> rear + 1) % queue -> size);
 		return (0);
 	} else {
-		reutrn (-1);
+		return (-1);
 	}
 }
 
@@ -41,7 +41,7 @@ dequeue (struct queue_t *queue) {
 	int temp;
 	temp = queue -> front;
 	queue -> front = ((queue -> front + 1) % queue -> size);
-	reutrn (queue -> base[temp]);
+	return (queue -> base[temp]);
 }
 
 int
