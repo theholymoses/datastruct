@@ -5,7 +5,7 @@
 
 #include "queue.h"
 
-#define SIZE  20
+#define SIZE  10
 #define FROM  33
 #define TO   126
 
@@ -24,13 +24,13 @@ int main (void) {
 
 	printf ("******************** Adding elements to queue ********************\n");
 	int randnum;
-	int elem = 0;
-	while (elem < SIZE) {
+	while (1) {
 		randnum = rand_range (FROM, TO);
-		enqueue (queue, randnum);
-
-		printf ("Added element %c(%d) to queue.\n", randnum, randnum);
-		++elem;
+		if (enqueue (queue, randnum) != -1) {
+			printf ("Added element %c(%d) to queue.\t(q->front = %d, q->rear = %d)\n", randnum, randnum, queue->front, queue->rear);
+		} else {
+			break;
+		}
 	}
 
 	printf ("******************** Removing elements from queue ********************\n");
@@ -38,7 +38,7 @@ int main (void) {
 	while ( !is_empty (queue)) {
 		removed = dequeue (queue);
 
-	printf ("Removed element %c(%d) from queue.\n", removed, removed);
+	printf ("Removed element %c(%d) from queue.\t(q->front = %d, q->rear = %d)\n", removed, removed, queue->front, queue->rear);
 	}
 
 	return (0);
