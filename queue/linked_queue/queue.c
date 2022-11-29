@@ -12,12 +12,12 @@ struct queue_node_t*
 get_node (void) {
 	struct queue_node_t *temp;
 
-	if (free_list == NULL) {
+	if (free_list != NULL) {
 		temp = free_list;
 		free_list = free_list -> next;
 	} else {
 		if (current_block == NULL || size_left == 0) {
-			temp = (struct queue_node_t*)malloc (BLOCKSIZE * sizeof (struct queue_node_t));
+			current_block = (struct queue_node_t*)malloc (BLOCKSIZE * sizeof (struct queue_node_t));
 			size_left = BLOCKSIZE;
 		}
 		temp = current_block++;
@@ -73,7 +73,6 @@ enqueue (struct queue_t *q, char item) {
 	} else {
 		q -> remove = q -> insert = temp;
 	}
-
 }
 
 char

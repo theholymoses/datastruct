@@ -25,10 +25,10 @@ int main (void) {
 	printf ("******************** Adding elements to queue ********************\n");
 	int randnum;
 	int ind = 0;
-	while (ind <= SIZE) {
+	while (ind++ <= SIZE) {
 		randnum = rand_range (FROM, TO);
 		enqueue (queue, randnum);
-		printf ("Added element %c(%d) to queue.\n", randnum);
+		printf ("Added element %c(%d) to queue.\n", randnum, randnum);
 	}
 
 	printf ("******************** Removing elements from queue ********************\n");
@@ -36,7 +36,7 @@ int main (void) {
 	while ( !is_empty (queue)) {
 		removed = dequeue (queue);
 
-	printf ("Removed element %c(%d) from queue.\n", removed);
+	printf ("Removed element %c(%d) from queue.\n", removed, removed);
 	}
 
 	return (0);
